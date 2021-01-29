@@ -41,4 +41,11 @@ Uncle BOB 3 laws of TDD:
 1. You may not write any production code until you have written a failing unit test.
 2. You may not write more of a unit test than is sufficient to fail, and not compiling is failing.
 3. You may not write more production code than is sufficient to pass the currently failing unit test.
+
+
+Test Discovery:
+- Pytest will automatically discover tests when you execute base on a standard naming convention.
+- Test functions should include "test" at the beginning of the function name.
+- Classes with tests in them should have "Test" at the beginning of the class name and not have an "__init__" method.
+- Filenames of test modules should start or end with "test".(i.e. test_example.py or example_test.py).
 """
