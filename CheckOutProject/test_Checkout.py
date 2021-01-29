@@ -29,3 +29,7 @@ class TestClassCheckout:
         checkout.addItem("a")
         checkout.addItem("a")
         assert checkout.calculateTotal() == 2
+
+    def test_exception_with_bad_item(self, checkout):
+        with pytest.raises(Exception):
+            checkout.addItem("c")
