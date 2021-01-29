@@ -95,4 +95,73 @@ directory and sub directories.
     * --ignore: ignore the specified path when discovering tests.
     * --maxfail: Stop  after the specified number of failures.
 
+Test Doubles:
+- Almost all code depends (i.e. collaborates) with other parts of the system.
+- Those other parts of the system are not always easy to replicate in the unit test environment
+or would make tests slow if used directly.
+- Test Doubles are objects that are used in unit tests as replacements of the real production system collaborators.
+
+Types of Test Doubles
+- Dummy *
+    Objects that can be passed around as necessary but do not have any type of test implementation and shoould
+    never be used.(Often generates exceptions if they are called)
+- Fake
+    * These objects  generally have a simplified functional implementation of a particular interface that is
+    adequate for testing but not for production.
+- Stubs
+    * These objects provide implementations with canned answers that are suitable for the test.
+- Spies
+    * These objects provide implementations that record the values that were passed in so they can be used
+    by the test.
+- Mocks
+    * These objects are pre-programmed to expect specific calls and parameters and can throw exceptions when
+    necessary.
+
+Mock Frameworks
+- Most mock frameworks provide easy ways for automatically creating any of these types of test doubles AT RUNTIME.
+- They provide a fast means for creating mocking expectations for your tests.
+- They can be much more efficient that implementing custom mock object of your own creation.
+- Creating mock objects by hand can be tedious and error prone.
+
+unitest.mock
+- Python Mockign Framework
+- Built in to Python version 3.3 and newer
+- Needs to be installed for older versions of Python with the command "pip install mock".
+
+unittest.mock - Mock Class
+- unittest.mock provides the mock class which can be used as a fake, stub, spy or true mock for all your tests.
+- The Mock class has many initializations parameters for controlling its behavior.
+- Once it has been called a Mock object has many buit-in functions for verifying how it was used.
+- Mock provides many initialization parameters which can be used to control the mock objects behavior.
+    * "spec" parameter specifies the interface that Mock object is implementing.
+    * "side_effect" parameters specifies a function that should be called when the mock is called.
+    * "return_value" parameter specifies the return value when the Mock is called.
+            ! If "side_effect" parameter is set, it's return value is used instead.
+
+Mock - Verification
+- Mock provides many built-in functions for verifying how it was used such as following asserts:
+    * assert_called- Assert the mock was called
+    * assert_called_once - Assert the mock was called once.
+    * assert_called_with - Will pass if the Assert was called with the specified parameters.
+    * assert_called_once_with - Assert if the mock was called once with the specified parameters.
+    * assert_any_call - Assert the mock was eer called with the specified parameters.
+    * assert_not_called - Assert the mock was not called
+    * assert_has_calls - Assert the mock was called with the list of calls(optionally in order)
+    * called - A boolean value indicating if the mock was ever called.
+    * call_count - An integer value representing the number of times the mock object was called.
+    * call_args - The arguments the mock was last called with.
+    * call_args_list - A list containing the arguments that wae used for each call to the mock.
+
+unittest.mock - MagicMock Class
+- MagicMock is derived from Mock and provides a default implementation of many of the default "magic"
+methods defined for objects in Python(i.e. __str__)
+- The following magic methods are not implemented by default in MagicMock:
+    *, __del__, __getattr__, __setattr__, __init__, __new__, __prepare__, __instancecheck__, __subclasscheck__
+
+Pytest Monkeypatch Test Ficture
+- PyTest provides the monkeypatch text fixture to allow a test to dynamically replace:
+     * module and class attributes
+     * dictionary entries
+     * environment variables
+     
 """
