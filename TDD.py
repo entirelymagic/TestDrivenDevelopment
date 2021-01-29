@@ -163,5 +163,52 @@ Pytest Monkeypatch Test Ficture
      * module and class attributes
      * dictionary entries
      * environment variables
-     
+
+
+! Always do the next simplest test case
+- Doing the next simplest test case allows you to gradually increase the complexity of your code.
+- If you jump into the complex test cases to quickly you will find yourself stuck writing a lot of functionality all
+at once.
+- Beyond just slowing you down, this can also lead to bad design decisions.
+
+! Use Descriptive Test Names:
+- Code is read 1000 times more than it's written. Make it clear and readable!
+- Unit tests are the best documentation for how your code works. Make them easy to understand.
+- Test suites should name the class of function under test and the test names should describe the
+functionality being tested.
+
+! Keep test Fast
+- One of the biggest benefits of TDD is the fast feedback on how your changes have effected things.
+- This goes away if your unit tests take more than a few seconds to buid and run.
+- To hel your test stay fast try to:
+    - Keep console output to a minimum. This slows things down and can clutter up the testing framework output.
+    - Mock out any slow collaborators with test doubles that are fast.
+
+! Use Code Coverage Tools
+- Once you have all your test cases covered and you think you're done run your unit test through a code
+coverage tool
+- This can help you identify any test cases you may have missed(i.e. negative test cases).
+- You should have a goal of 100% code coverage in functions with real logic in them
+    * (i.e. not simple getters/setters)
+
+!Run Your Tests Multiple Times and In Random Order!
+- Running your tests many times iwll help ensure that you don't have any flaky tests that fail intermittently.
+- Running your tests in random order ensures that your tests don't have any dependencies between each other
+- "pytest-random-order" plugin to randomize the order that the tests are executed.
+- "pytest-repeat" plugin to repeat one or more tests a specific number of time.
+
+Use a Static Code Analysis Tool
+
+Test Behavior Rather than Implementation:
+- When writing your tests try to test the behavior rather than the implementation.
+- When your test is written to verify the behavior rather than the implementation then the
+implementation can change without affecting your test.
+- This is not always possible as some implementations use collaborators that need to be mocked out.
+- In addition, some testing is specifically to verify that the implementation is calling and handling responses from
+collaborators correctly (i.e. database and network calls).
+
+Additional reading :
+- Kent Beck - Test driven development: By Example
+- Robert Martin - Clean Code: A handbook of agile Software Craftsmanship
+- Michael Feathers - Working Effectively with Legacy Code
 """
